@@ -1,0 +1,45 @@
+<div class="modal" tabindex="-1" role="dialog" id='modal' aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Nombre: <input type="text" [(ngModel)] = "actualizoEmpleado.nombre" name="nombre">
+        <br>
+        Apellidos: <input type="text" [(ngModel)] = "actualizoEmpleado.apellidos" name="apellidos">
+        <br>
+        Departamento: <input type="text" [(ngModel)] = "actualizoEmpleado.departamento" name="departamento">
+        <br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="actualizarEmpleado()" class="btn btn-primary" data-dismiss="modal">Guardar cambios</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form (ngSubmit)='agregarEmpleado()'>
+    Nombre: <input type="text" [(ngModel)] = "nuevoEmpleado.nombre" name="nombre">
+    <br>
+    Apellidos: <input type="text" [(ngModel)] = "nuevoEmpleado.apellidos" name="apellidos">
+    <br>
+    Departamento: <input type="text" [(ngModel)] = "nuevoEmpleado.departamento" name="departamento">
+    <br>
+
+    <button type='submit'>Añadir empleado</button>
+</form>
+  
+<ul>
+    <li class="text" *ngFor="let item of empleados">
+      {{item.nombre}} {{item.apellidos}}, trabaja en el departamento de: {{item.departamento}} - id: {{item.id}}
+      <button (click)="borrarEmpleado(item)">Borrar</button> 
+      <button (click)="cargarEmpleado(item)" data-toggle='modal' data-target='#modal'>Actualizar</button>
+    </li>
+  </ul>
+
+

@@ -1,0 +1,36 @@
+<div id='contenedor'>
+  <h5>Ejemplo - valores de variables, funciones y objetos</h5>
+  <p>{{saludo}}</p>
+  <p>El valor que devuelve la función es {{getPuntuacion()}}</p>
+  <p>El nombre completo del alumno es {{alumno1.nombre}} {{alumno1.apellido}} y vive en {{alumno1.ciudad}}</p>
+  <button id="demo">Pulsa aquí</button>
+  <br>
+  <hr>
+  <h5 >Prueba con ngModel</h5>
+  <input type="text" [(ngModel)]="textoUser" placeholder="Escribe tu nombre">
+  <button (click)="getName()">Pulsa este botón</button>
+  <p>{{textoUser}}</p>
+  <hr>
+  <p *ngIf="nombre == null; else conInfo">La variable es null</p>
+  <ng-template #conInfo>
+    La variable tiene contenido
+  </ng-template>
+
+  <button (click)="botonPulsado = !botonPulsado">Pulsa este botón</button>
+  <p *ngIf="botonPulsado; else noPulsado">Botón pulsado</p>
+  <ng-template #noPulsado>
+    Botón no pulsado
+  </ng-template>
+  <hr>
+  <h5>Ejemplo con *ngFor</h5>
+  <ul>
+    <li *ngFor="let alumno of alumnos; index as i">
+      {{alumno.nombre}} {{alumno.apellido}}, vive en {{alumno.ciudad}}
+    </li>
+  </ul>
+  <h5 appDirectivaPropia >Prueba con directiva propia</h5>
+  <h5>Ejemplo con pipes</h5>
+  <p>{{fechaActual | date: 'd/M/y'}}</p>
+
+</div>
+
